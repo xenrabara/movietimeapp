@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div class="jumbotron">
+    <h1>Welcome!</h1>
+</div>
+
+<div class="row" ng-app ng-controller="MovieCtrl">
+    <ul>
+        <li ng-repeat="movie in movies">
+            {{movie}}
+        </li>
+    </ul>
+    <input type="text" ng-model="item" />
+    <button type="button" ng-click="addMovie(item)" class="btn btn-info">Add Movie</button>
+
+</div>

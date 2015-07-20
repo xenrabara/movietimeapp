@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div class="jumbotron">
+    <h1>Welcome!</h1>
+</div>
+
+<div ng-controller="TeamCtrl">
+    <div class="row">
+        <label class="col-md-8">Available Employees</label>
+        <select ng-model="team" ng-options="team.Name for team in teams" ng-change="teamSelected(team)"></select>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5">
+            <div class="list-group">
+                <a href="#" class="list-group-item" ng-repeat="availableEmployee in availableEmployees" ng-model="availableEmployee" ng-click="$parent.selected = availableEmployee" ng-class="{active:selected==availableEmployee}">
+                    <p>
+                        {{availableEmployee.FirstName}} {{availableEmployee.LastName}}
+                    </p>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-info glyphicon" type="button" ng-model="availableEmployee" ng-click="assignEmployeeToTeam(selected.EmployeeID)">ADD  <span class="glyphicon-arrow-right"></span></button>
+            <button class="btn btn-info glyphicon" type="button" ng-model="employee" ng-click="removeEmployeeFromTeam(selected.EmployeeID)"><span class="glyphicon-arrow-left"></span> Remove</button>
+        </div>
+        
+
+        <div class="col-md-5">
+            <div class="list-group">
+                <a href="#" id="displayedEmployee" class="list-group-item" ng-repeat="employee in employeesPerTeam" ng-model="employee" ng-click="$parent.selected = employee" ng-class="{active:selected==employee}">
+                    <p>
+                        {{employee.FirstName}} {{employee.LastName}}
+                    </p>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
